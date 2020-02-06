@@ -1,3 +1,47 @@
 html {
     scroll-behavior: smooth;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 70vw;
+    margin: 0 auto;
+}
+
+header {
+    background-color: lightcoral;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+    padding: 1rem;
+    margin: 0.2rem;
+    font-size: 1.5rem; 
+    text-transform: uppercase;   
+}
+
+a {
+    text-decoration: none;
+    color: darkred;
+}
+
+h1 {
+    text-align: center;
+    padding: 1rem;
+}
+
+h2 {
+    padding: 1rem;
+}
+
