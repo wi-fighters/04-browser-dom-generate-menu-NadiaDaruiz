@@ -1,54 +1,43 @@
 (() => {
-    // The general workflow is:
-    // create an element
-    // target its parent
-    // prepend (or append) it as a child
-    
-    // DO THE SETUP
-    
-        // grab the closest EXISTING parent already in the DOM (on the page)
-        const body = document.body;
-        
-        // we're creating a list based on the number of sections, so grab those...
-        
-        // grab all the sections and destructure it into an array
-        const sections = [...document.querySelectorAll('section')];
-        console.log(sections);
-        
-        // map over them and store their id in a new array
-        const ids = sections.map(section => section.id); // home
-        console.log(ids);
-    
-    // DO THE HARD WORK
-    
-        // create a new thing
-        const header = document.createElement('header');
-        
-        const ul = document.createElement('ul');
-        
-        // Which tool do we use to iterate over these steps?
-        // We don't need a new array, so forEach works for us
-        
-        ids.forEach(id => {
-            const li = document.createElement('li');
-        
-            const link = document.createElement('a');
-            link.setAttribute('href', '#home'); // TODO: get this programmatically
-        
-            const linkText = document.createTextNode('Home'); // TODO: get this programmatically
-        
-            link.prepend(linkText);
-        
-            li.prepend(link);
-        
-            ul.prepend(li);
-        });
-            
-        header.prepend(ul);
-    
-    // SEE THE RESULT
-    
-        // Once you're built the whole subtree in memory,
-        // Add it to the DOM (define the relationship between the two things)
-        body.prepend(header);    
-})();
+    const body = document.querySelector("body");
+    const header = document.createElement("header");
+    const ul = document.createElement("ul");
+
+    // need to create 6 li (base on the number of sections) inside ul
+    // need to give each li a link. Each link should have an href attribute  (# + name of section)
+    //And each link should contain an innerText 
+
+    const sections = [...document.querySelectorAll('section')]; // this is an array
+
+    const ids = sections.map(section => section.id); // this is an array
+    console.log(ids);
+
+    // const hrefs = ids.map(href => "#" + href); NOT NECESSARY TO DO THIS
+
+    ids.forEach(id => {
+
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.setAttribute("href", "#" + id);
+
+        const addLinkText = document.createTextNode(id.charAt(0).toUpperCase() + id.substring(1));
+
+        link.appendChild(addLinkText);
+        li.appendChild(link);
+        ul.appendChild(li);
+        // console.log(link);
+    })
+
+    header.prepend(ul);
+    body.prepend(header);
+    console.log(body);
+
+})()
+
+
+
+
+
+
+
+
